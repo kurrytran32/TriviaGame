@@ -59,32 +59,31 @@ let app = {
     },
 
     choicesPush: function () {
-        app.choicesArr.push(app.appQuestions.number1.a, app.appQuestions.number2.a, app.appQuestions.number3.a, app.appQuestions.number4.a, app.appQuestions.number5.a, app.appQuestions.number6.a, app.appQuestions.number7.a, app.appQuestions.number8.a, app.appQuestions.number9.a, app.appQuestions.number10.a)
-        // app.choicesArr.join(" ");
+        app.choicesArr.push(app.appQuestions.number1.a, app.appQuestions.number2.a, app.appQuestions.number3.a, app.appQuestions.number4.a, app.appQuestions.number5.a, app.appQuestions.number6.a, app.appQuestions.number7.a, app.appQuestions.number8.a, app.appQuestions.number9.a, app.appQuestions.number10.a);
         console.log(app.choicesArr);
     },
+    
+
     //function to show questions on top page
     showQuestions: function () {
 
         //for loop to loop through the questions array
         for (i = 0; i < app.questionsArr.length; i++) {
             for (i = 0; i < app.choicesArr.length; i++) {
-                $('#app-main').append('<div class="questions">' + (app.questionsArr[i]) + "<p>" + (app.choicesArr[i]) + "</p>" + "</div>");
+                $('#app-main').append('<div class="questions">' + app.questionsArr[i]);
+                for (j = 0; j < app.choicesArr[i].length; j++) {
+                    $('#app-main').append(" <input type='radio'> " +app.choicesArr[i][j] + "</div>");
+                }
             }
         }
     },
-    // showChoices: function() {
-    //for loop for length of choices array
-    //set to radio buttons
-    //     for (i = 0; i < app.choicesArr.length; i++) {
-    //         $('.questions').append('<p>' + (app.choicesArr[i]) + "</p>");
-    //     }
-    // },
+    
+    
     gameStart: function () {
         app.questionPush();
         app.choicesPush();
         app.showQuestions();
-        // app.showChoices();
+        
     },
 
 };
