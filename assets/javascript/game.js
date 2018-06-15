@@ -11,6 +11,7 @@ let app = {
             q: "Who has the quirk, All for One?",
             //a1[1] is the real answer
             a: ["Bakugo Katsuki", "Midoriya Izuku", "Mina Ashido", "Yuga Aoyama"],
+            correctAnswer: "1",
         },
         number2 = {
             q: "Who is not in Class 1-A?",
@@ -51,74 +52,73 @@ let app = {
     ],
     //pushing questions into array
     questionPush: function () {
-        for (i = 0; i < app.appQuestions.length; i++) {
-            let ident = i + 1;
-            app.questionsArr.push(app.appQuestions[i].q);
-            $('#app-main').append('<div class="questions">'+ ident + ". " + app.appQuestions[i].q);
 
-            $('#app-main').append("<div id='answers" + i + "'>")
-            $("#answers").append('<form>');
+        // for (i = 0; i < app.appQuestions.length; i++) {
+        //     $('#app-main').append('<div class="questions">' + (i + 1) + ". " + app.appQuestions[i].q);
+        //     $('#app-main').append('<div class="answers">');
+        //     for(j = 0; j < app.appQuestions[i].a.length; j++){
+        //         if($(".answers:last-child").val() < app.appQuestions[i].a.length){
+        //         $(".answers").append("<input type= 'radio' name='radino' value='" + j + "'>" + app.appQuestions[i].a[j]);
+        //         }
+        //     }
+        // }
+        // console.log(app.questionsArr);
+
+
+        //for loop to loop through the questions array
+        for (i = 0; i < app.questionsArr.length; i++) {
+            for (i = 0; i < app.choicesArr.length; i++) {
+                $('#app-main').append('<div class="questions">' + app.questionsArr[i]);
+                // $('#app-main').append('<div class="answers">');
+                for (j = 0; j < app.choicesArr[i].length; j++) {
+                    $('#app-main').append(" <input type='radio' name='radino" + i + "' value='" + j + "'>" + app.choicesArr[i][j]);
+                }
+            }
         }
-        
-        
-        console.log(app.questionsArr);
+
+
     },
-    
-
-
-    //pushing answer choices to array
-    // choicesPush: function () {
-    //     for (i = 0; i < app.appQuestions.length; i++) {
-    //         app.choicesArr.push(app.appQuestions[i].a);
-    //     }
-    //     console.log(app.choicesArr);
-    // },
 
 
     //function to show questions on top page
     showChoices: function () {
-        for (i = 0; i < app.appQuestions.length; i++){
-            let position = app.appQuestions[i];
-            console.log(position)
-            $(`form`).append(position.a[i]);
-            //for loop for going through appquestions array
-            
-                
-                
-                  
-            
+        for (i = 0; i < app.appQuestions.length; i++) {
+            app.questionsArr.push(app.appQuestions[i].q);
         }
-        
+        for (i = 0; i < app.appQuestions.length; i++) {
+            app.choicesArr.push(app.appQuestions[i].a);
+        }
+
     },
-    
+
 
 
     gameStart: function () {
-        app.questionPush();
-        // app.choicesPush();
-
         app.showChoices();
-        // app.createDivs();
+        app.questionPush();
+
+
     },
 
 };
 $(document).ready(app.gameStart);
 // toggles radio button checked value to unchecked vice versa
-// $(function () {
-//     $('input:radio').change(function(){
-//         let $input = $('input:radio');
-//         if($input.attr('checked')){
-//             $input.removeAttr('checked');
-//         } else {
-//             $input.attr('checked', 'checked');
-//         }
+$(function () {
+    $('input:radio').change(function () {
+        let $input = $('input:radio');
+        if ($input.attr('checked')) {
+            $input.removeAttr('checked');
+        } else {
+            $input.attr('checked', 'checked');
+        }
 
 
-// })
+    })
 
-// })
+})
 
 
+//setting value = app.choicesArr[i][j] and setting check string value
 
 
 
