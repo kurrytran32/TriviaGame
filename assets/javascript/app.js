@@ -1,89 +1,165 @@
 //object for the game holder for questions and answers
 let app = {
 
-    appQuestions: {
-        number1: {
+    appQuestions: [
+        number1 = {
             //contents for question 1
             q: "Who has the quirk, All for One?",
             //a1[1] is the real answer
-            a: ["Bakugo Katsuki", "Midoriya Izuku", "Mina Ashido", "Yuga Aoyama"],
+            answers: {
+                a: "Bakugo Katsuki",
+                b: "Midoriya Izuku",
+                c: "Mina Ashido",
+                d: "Yuga Aoyama",
+            },
+            correctAnswer: "c",
         },
-        number2: {
+        number2 = {
             q: "Who is not in Class 1-A?",
-            a: ["Kosei Tsuburaba", "Shoto Todoroki", "Fumikage Tokoyami", "Tsuyu Asui"],
+            answers: {
+                a: "Kosei Tsuburaba",
+                b: "Shoto Todoroki",
+                c: "Fumikage Tokoyami",
+                d: "Tsuyu Asui",
+            },
+            correctAnswer: "a",
         },
-        number3: {
+        number3 = {
             q: "Midoriya Izuku was born quirkless.",
-            a: ["True", "False"],
+            answers: {
+                a: "True",
+                b: "False",
+            },
+            correctAnswer: "a",
         },
-        number4: {
+        number4 = {
             q: "What is Shota Aizawa’s quirk?",
-            a: ["Strength Enhancement", "Air Jet", "Quirk Nullification", "Black Hole"],
+            answers: {
+                a: "Strength Enhancement",
+                b: "Air Jet",
+                c: "Quirk Nullification",
+                d: "Black Hole",
+            },
+            correctAnswer: "c",
         },
-        number5: {
+        number5 = {
             q: "Who is the main Villain in My Hero Academy?",
-            a: ["Toga Himiko", "Chisaki Kai", "Nomu", "Shigaraki Tomura"],
+            answers: {
+                a: "Toga Himiko",
+                b: "Chisaki Kai",
+                c: "Nomu",
+                d: "Shigaraki Tomura",
+            },
+            correctAnswer: "d",
         },
-        number6: {
+        number6 = {
             q: "Who get captured during the Forest Training Arc?",
-            a: ["All Might", "Gentle Criminal", "Bakugo Katsuki", "Amajiki Tamaki"],
+            answers: {
+                a: "All Might",
+                b: "Gentle Criminal",
+                c: "Bakugo Katsuki",
+                d: "Amajiki Tamaki",
+            },
+            correctAnswer: "c",
         },
-        number7: {
+        number7 = {
             q: "People who illegally use their quirks for hero work are called vigilanties.",
-            a: ["True", "False"],
+            answers: {
+                a: "True",
+                b: "False",
+            },
+            correctAnswer: "a",
         },
-        number8: {
+        number8 = {
             q: "One-for-All is All Mights teacher.",
-            a: ["True", "False"],
+            answers: {
+                a: "True",
+                b: "False",
+            },
+            correctAnswer: "b",
         },
-        number9: {
+        number9 = {
             q: "What is U.A High School’s motto?",
-            a: ["Carpe Diem", "Heroes of Today", "Plus Ultra", "Villains Beware"],
+            answers: {
+                a: "Carpe Diem",
+                b: "Heroes of Today",
+                c: "Plus Ultra",
+                d: "Villains Beware",
+            },
+            correctAnswer: "c",
         },
-        number10: {
+        number10 = {
             q: "Which hero has the quirk of characteristics of a frog?",
-            a: ["Jeanist", "Froppy", "Lemillion", "Thirteen"],
-        },
-    },
+            answers: {
+                a: "Jeanist",
+                b: "Froppy",
+                c: "Lemillion",
+                d: "Thirteen"
+            },
+            correctAnswer: "b",
+        }
+    ],
     //Array for questions for displaying
     questionsArr: [],
     choicesArr: [],
+    
+
 
 
 
     questionPush: function () {
+        for (i = 0; i < app.appQuestions.length; i++) {
+            let ident = i + 1;
+            app.questionsArr.push(app.appQuestions[i].q);
+            $('#app-main').append('<div class="questions">'+ ident + ". " + app.appQuestions[i].q);
 
-        app.questionsArr.push(app.appQuestions.number1.q, app.appQuestions.number2.q, app.appQuestions.number3.q, app.appQuestions.number4.q, app.appQuestions.number5.q, app.appQuestions.number6.q, app.appQuestions.number7.q, app.appQuestions.number8.q, app.appQuestions.number9.q, app.appQuestions.number10.q)
+            $('#app-main').append("<div class='answers'>")
 
+        }
+        
+        $(".answers").append('<form>');
         console.log(app.questionsArr);
     },
 
     choicesPush: function () {
-        app.choicesArr.push(app.appQuestions.number1.a, app.appQuestions.number2.a, app.appQuestions.number3.a, app.appQuestions.number4.a, app.appQuestions.number5.a, app.appQuestions.number6.a, app.appQuestions.number7.a, app.appQuestions.number8.a, app.appQuestions.number9.a, app.appQuestions.number10.a);
-        console.log(app.choicesArr);
-    },
-    
+        console.log(1);
+        for (i = 0; i < app.appQuestions.answers.length; i++){
+        let position = app.appQuestions[i];
+        //for loop for going through appquestions array
+        for (i = 0; i < position.answers[i].length; i++){
+            //variable to access items in array
+            console.log(i)
+            $(`form`).append("<input type='radio' name='idk'>");
+            
+              
+        };
+    }
 
-    //function to show questions on top page
-    showQuestions: function () {
-
-        //for loop to loop through the questions array
-        for (i = 0; i < app.questionsArr.length; i++) {
-            for (i = 0; i < app.choicesArr.length; i++) {
-                $('#app-main').append('<div class="questions">' + app.questionsArr[i]);
-                for (j = 0; j < app.choicesArr[i].length; j++) {
-                    $('#app-main').append(" <input type='radio'> " +app.choicesArr[i][j] + "</div>");
-                }
-            }
-        }
     },
-    
-    
+
+
+
+
+    // //function to show questions on top page
+    // showQuestions: function () {
+
+    //     //for loop to loop through the questions array
+    //     for (i = 0; i < app.questionsArr.length; i++) {
+    //         for (i = 0; i < app.choicesArr.length; i++) {
+    //             $('#app-main').append('<div class="questions">' + app.questionsArr[i]);
+    //             for (j = 0; j < app.choicesArr[i].length; j++) {
+    //                 $('#app-main').append(" <input type='radio'> " + app.choicesArr[i][j] + "</div>");
+    //             }
+    //         }
+    //     }
+    // },
+
+
     gameStart: function () {
         app.questionPush();
         app.choicesPush();
-        app.showQuestions();
-        
+        // app.showQuestions();
+
     },
 
 };
