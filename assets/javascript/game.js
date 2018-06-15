@@ -71,7 +71,7 @@ let app = {
                 $('#app-main').append('<div class="questions">' + app.questionsArr[i]);
                 // $('#app-main').append('<div class="answers">');
                 for (j = 0; j < app.choicesArr[i].length; j++) {
-                    $('#app-main').append(" <input type='radio' name='radino" + i + "' value='" + j + "'>" + app.choicesArr[i][j]);
+                    $('#app-main').append(" <input type='radio' name='radino" + i + "' value='" + j + "'/>" + app.choicesArr[i][j]);
                 }
             }
         }
@@ -103,20 +103,26 @@ let app = {
 };
 $(document).ready(app.gameStart);
 // toggles radio button checked value to unchecked vice versa
-$(function () {
-    $('input:radio').change(function () {
-        let $input = $('input:radio');
-        if ($input.attr('checked')) {
-            $input.removeAttr('checked');
-        } else {
-            $input.attr('checked', 'checked');
-        }
+// $(function () {
+//     $('input:radio').change(function () {
+//         let $input = $('input:radio');
+//         if ($input.attr('checked')) {
+//             $input.removeAttr('checked');
+//         } else {
+//             $input.attr('checked');
+//         }
+//     })
+// })
 
 
-    })
-
-})
-
+// $('input:radio').on('click', function () {
+//     if ($('input:radio').attr('checked')) {
+//         $('input:radio').removeAttr('checked')
+//     }else {
+//         $('input:radio').attr('checked')
+//     }
+// })
+    
 
 //setting value = app.choicesArr[i][j] and setting check string value
 
